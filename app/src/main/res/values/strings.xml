@@ -2,6 +2,7 @@
     <string name="app_name">BudgetFit</string>
 
     <!-- Common Strings -->
+    <string name="login">Login</string>
     <string name="next">N E X T</string>
     <string name="create_account">Create Account</string>
     <string name="sign_in">Sign In</string>
@@ -23,6 +24,9 @@
 
     <!-- Screen04 -->
     <string name="sign_in_title">Sign Up</string>
+
+    <!-- Screen05 -->
+    <string name="continue_">Let\'s Sign ln.! Login to Your Account and Manage Your Finance</string>
 
 
 </resources>
