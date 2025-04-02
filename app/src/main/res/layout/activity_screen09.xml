@@ -7,18 +7,6 @@
     android:background="@color/white"
     tools:context=".Screen09">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Navigate back"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!-- Header -->
     <androidx.cardview.widget.CardView
         android:id="@+id/headerCard"
@@ -159,6 +147,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/budgetGoalLayout" />
 
+    <!-- Back Button (styled like Save Button) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/styledBackButton"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:text="BACK"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/Lightyello"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveGoalButton" />
+
     <!-- Chart Title -->
     <TextView
         android:id="@+id/chartTitle"
@@ -171,7 +176,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saveGoalButton" />
+        app:layout_constraintTop_toBottomOf="@+id/styledBackButton" />
 
     <!-- Scrollable Chart Container -->
     <ScrollView
@@ -207,5 +212,6 @@
 
             <!-- Bars will be added programmatically here -->
         </LinearLayout>
+
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

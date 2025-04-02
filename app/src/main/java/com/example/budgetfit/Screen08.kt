@@ -24,6 +24,7 @@ class Screen08 : AppCompatActivity() {
     private lateinit var emptyStateLayout: View
     private lateinit var totalAmountText: TextView
     private lateinit var addNewButton: MaterialButton
+    private lateinit var backButton: MaterialButton
     private var currentCategory = "All Categories"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +33,7 @@ class Screen08 : AppCompatActivity() {
 
         expenseRepository = ExpenseRepository(this)
         initializeViews()
+        setupBackButton()
         setupRecyclerView()
         setupCategorySpinner()
         setupAddButton()
@@ -48,6 +50,21 @@ class Screen08 : AppCompatActivity() {
         emptyStateLayout = findViewById(R.id.emptyStateLayout)
         totalAmountText = findViewById(R.id.totalAmountText)
         addNewButton = findViewById(R.id.addNewButton)
+        backButton = findViewById(R.id.backButton)
+    }
+
+    private fun setupBackButton() {
+        backButton.setOnClickListener {
+            navigateToScreen06()
+        }
+    }
+
+    private fun navigateToScreen06() {
+        val intent = Intent(this, Screen06::class.java)
+        // Clear the back stack so user can't return to this screen with back button
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish() // Finish current activity
     }
 
     private fun setupRecyclerView() {

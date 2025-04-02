@@ -21,7 +21,7 @@ class MainActivity<Button> : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Screen02::class.java)
             startActivity(intent)
             finish()
-        }, 5500)
+        }, 4500)
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

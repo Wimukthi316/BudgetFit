@@ -19,6 +19,7 @@ class Screen07 : AppCompatActivity() {
     private lateinit var amountInput: TextInputEditText
     private lateinit var dateInput: TextInputEditText
     private lateinit var addButton: MaterialButton
+    private lateinit var backButton: MaterialButton
 
     private lateinit var expenseRepository: ExpenseRepository
     private var editingExpenseId: String? = null
@@ -30,6 +31,7 @@ class Screen07 : AppCompatActivity() {
 
         expenseRepository = ExpenseRepository(this)
         initializeViews()
+        setupBackButton()
         checkEditMode()
         setupCategoryDropdown()
         setupDatePicker()
@@ -42,6 +44,13 @@ class Screen07 : AppCompatActivity() {
         amountInput = findViewById(R.id.amountInput)
         dateInput = findViewById(R.id.dateInput)
         addButton = findViewById(R.id.addButton)
+        backButton = findViewById(R.id.backButton)
+    }
+
+    private fun setupBackButton() {
+        backButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun checkEditMode() {
@@ -99,7 +108,7 @@ class Screen07 : AppCompatActivity() {
             if (validateInputs()) {
                 saveExpense()
                 showSuccessMessage()
-                navigateToScreen08()
+                finish()
             }
         }
     }
@@ -155,10 +164,5 @@ class Screen07 : AppCompatActivity() {
     private fun showSuccessMessage() {
         val message = if (isEditMode) "Expense updated!" else "Expense added!"
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun navigateToScreen08() {
-        startActivity(Intent(this, Screen08::class.java))
-        finish()
     }
 }

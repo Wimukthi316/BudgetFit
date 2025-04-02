@@ -8,6 +8,8 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -17,12 +19,6 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
 import java.util.*
-import android.view.Gravity
-import android.view.View
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
 
 class Screen09 : AppCompatActivity() {
 
@@ -30,6 +26,7 @@ class Screen09 : AppCompatActivity() {
     private lateinit var budgetGoalInput: TextInputEditText
     private lateinit var monthDropdown: AutoCompleteTextView
     private lateinit var saveGoalButton: MaterialButton
+    private lateinit var styledBackButton: MaterialButton
     private lateinit var chartContainer: LinearLayout
 
     private lateinit var expenseRepository: ExpenseRepository
@@ -57,6 +54,7 @@ class Screen09 : AppCompatActivity() {
         setupMonthPicker()
         setupMonthDropdown()
         setupSaveButton()
+        setupBackButton()
         loadExistingGoal()
         updateChart()
     }
@@ -66,7 +64,22 @@ class Screen09 : AppCompatActivity() {
         budgetGoalInput = findViewById(R.id.budgetGoalInput)
         monthDropdown = findViewById(R.id.monthDropdown)
         saveGoalButton = findViewById(R.id.saveGoalButton)
+        styledBackButton = findViewById(R.id.styledBackButton)
         chartContainer = findViewById(R.id.chartContainer)
+    }
+
+    private fun setupBackButton() {
+        styledBackButton.setOnClickListener {
+            navigateToScreen06()
+        }
+    }
+
+    private fun navigateToScreen06() {
+        val intent = Intent(this, Screen06::class.java)
+        // Clear the back stack so user can't return to this screen with back button
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish() // Finish current activity
     }
 
     private fun setupMonthPicker() {
